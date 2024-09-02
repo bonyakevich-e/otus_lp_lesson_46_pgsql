@@ -71,3 +71,24 @@ hot_standby_feedback = on
 #Включаем использование зашифрованных паролей
 password_encryption = scram-sha-256
 ```
+Настраиваем параметры подключения в файле __/etc/postgresql/14/main/pg_hba.conf__:
+```
+# TYPE  DATABASE        USER            ADDRESS                 METHOD
+# "local" is for Unix domain socket connections only
+local   all                  all                                       peer
+# IPv4 local connections:
+host    all                  all             127.0.0.1/32              scram-sha-256
+# IPv6 local connections:
+host    all                  all             ::1/128                   scram-sha-256
+# Allow replication connections from localhost, by a user with the
+# replication privilege.
+local   replication     all                                peer
+host    replication     all        127.0.0.1/32            scram-sha-256
+host    replication     all        ::1/128                 scram-sha-256
+host    replication replication    192.168.56.11/32        scram-sha-256
+host    replication replication    192.168.56.12/32        scram-sha-256
+```
+Перезапускаем postgresql-server:
+```
+root@node1:~# systemctl restart postgresql
+```
