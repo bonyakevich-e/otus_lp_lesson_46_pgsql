@@ -92,3 +92,13 @@ host    replication replication    192.168.56.12/32        scram-sha-256
 ```
 root@node1:~# systemctl restart postgresql
 ```
+Настраиваем хост __node2__. 
+
+Останавливаем postgresql-server:
+```
+root@node2:~# systemctl stop postgresql
+```
+С помощью утилиты pg_basebackup копируем данные с node1:
+```
+
+```
