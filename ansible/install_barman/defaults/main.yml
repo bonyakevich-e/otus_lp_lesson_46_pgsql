@@ -1,0 +1,6 @@
+---
+# defaults file for install_barman
+#
+barman_user_password: 'Otus2024!'
+barman_user: 'barman'
+barman_ip: '192.168.56.13'

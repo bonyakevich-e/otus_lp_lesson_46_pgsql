@@ -1,0 +1,7 @@
+---
+# defaults file for postgres_replication
+#
+replicator_password: 'Otus2024!'
+master_ip: '192.168.56.11'
+slave_ip: '192.168.56.12'
+
